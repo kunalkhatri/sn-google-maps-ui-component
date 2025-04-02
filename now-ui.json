@@ -11,88 +11,98 @@
       },
       "properties": [
         {
-					"defaultValue": "Label",
-					"description": "Text displayed inside the button",
-					"fieldType": "string",
-					"label": "Label",
-					"managed": false,
-					"name": "label",
-					"readOnly": false,
-					"required": false,
-					"selectable": false,
-					"typeMetadata": {
-						"translatable": true,
-						"schema": {
-							"type": "string"
-						}
-					}
-				},
-        {
-          "name":"markers",
-          "label":"Markers",
-          "required":false,
-          "fieldType":"json",
-          "typeMetadata":{
-            "schema":{
-              "type":"object",
-              "properties": {
-                "lattitude":{
-                  "type":"number"
-                },
-                "longitude":{
-                  "type:":"number"
-                },
-                "label":{
-                  "type":"string"
-                }
-              },
-              "required": [
-                "lattitude",
-                "longitude"
-              ]
+          "defaultValue": "Label",
+          "description": "Text displayed inside the button",
+          "fieldType": "string",
+          "label": "Label",
+          "managed": false,
+          "name": "label",
+          "readOnly": false,
+          "required": false,
+          "selectable": false,
+          "typeMetadata": {
+            "translatable": true,
+            "schema": {
+              "type": "string"
             }
           }
         },
         {
-          "name":"initial_coordinates",
-          "label":"Initial Coordinates",
-          "fieldType":"json",
-          "typeMetadata":{
-            "schema":{
-              "type":"object",
-              "properties":{
-                "lattitude":{
-                  "type":"number"
-                },
-                "longitude":{
-                  "type:":"number"
+          "name": "markers",
+          "label": "Markers",
+          "required": false,
+          "fieldType": "json",
+          "typeMetadata": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "category": {
+                    "type": "string"
+                    },
+                  "lattitude": {
+                    "type": "number"
+                    },
+                  "longitude": {
+                    "type": "number"
+                    },
+                  "label": {
+                    "type": "string"
+                    }
                 }
               }
             }
           }
         },
         {
-          "name":"initial_zoom_level",
-          "label":"Inital Zoom level",
-          "fieldType":"number",
-          "defaultValue":12,
+          "name": "initialCoordinates",
+          "label": "Initial Coordinates",
+          "defaultValue": "{}",
+          "fieldType": "json",
           "typeMetadata": {
-						"schema": {
-							"type": "number"
-						}
-					}
+            "schema": {
+              "type": "object",
+              "properties": {
+                "longitude": {
+                  "type": "number"
+                },
+                "lattitude": {
+                  "type": "number"
+                }
+              },
+              "required": ["lattitude", "longitude"]
+            }
+          }
+        },
+        {
+          "name": "initialZoomLevel",
+          "label": "Inital Zoom level",
+          "fieldType": "number",
+          "defaultValue": 14,
+          "typeMetadata": {
+            "schema": {
+              "type": "number"
+            }
+          }
+        },
+        {
+          "name": "googleApiKey",
+          "label": "Google Places API key",
+          "fieldType": "string",
+          "defaultValue": "GOOGLE API KEY"
         }
       ],
-      "actions":[
+      "actions": [
         {
-          "description":"Fired from button",
-          "label":"Button click event",
-          "name":"PROPERTY_CHANGED",
-          "payload":[
+          "description": "Fired from button",
+          "label": "Button click event",
+          "name": "PROPERTY_CHANGED",
+          "payload": [
             {
-              "type":"string",
-              "label":"Label",
-              "name":"label"
+              "type": "string",
+              "label": "Label",
+              "name": "label"
             }
           ]
         }
