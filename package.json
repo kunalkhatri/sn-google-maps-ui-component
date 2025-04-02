@@ -1,0 +1,31 @@
+{
+  "name": "blue-box-component-experiment",
+  "version": "0.0.1",
+  "private": false,
+  "description": "A blue box on your screen",
+  "keywords": [
+    "ServiceNow",
+    "Next Experience UI Component",
+    "blue-box-component-experiment"
+  ],
+  "readme": "./README.md",
+  "engines": {
+    "node": ">=22"
+  },
+  "module": "src/index.js",
+  "dependencies": {
+    "@servicenow/now-alert": "^19.8.2-ecd",
+    "@servicenow/now-button": "latest",
+    "@servicenow/now-input": "^19.8.2-ecd",
+    "@servicenow/sass-kit": "latest",
+    "@servicenow/ui-core": "24.1.1",
+    "@servicenow/ui-renderer-snabbdom": "24.1.1",
+    "@tailwindcss/cli": "^4.0.17",
+    "tailwindcss": "^4.0.17"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.25.7",
+    "ajv": "^6.12.6",
+    "sass": "1.53.0"
+  }
+}

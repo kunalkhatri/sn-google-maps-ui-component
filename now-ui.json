@@ -1,0 +1,103 @@
+{
+  "components": {
+    "x-904640-blue-box-component-experiment": {
+      "innerComponents": [],
+      "uiBuilder": {
+        "associatedTypes": ["global.core", "global.landing-page"],
+        "label": "My Component",
+        "tileIcon": "./tile-icon/generic-tile-icon.svg",
+        "description": "A description of my component",
+        "category": "primitives"
+      },
+      "properties": [
+        {
+					"defaultValue": "Label",
+					"description": "Text displayed inside the button",
+					"fieldType": "string",
+					"label": "Label",
+					"managed": false,
+					"name": "label",
+					"readOnly": false,
+					"required": false,
+					"selectable": false,
+					"typeMetadata": {
+						"translatable": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				},
+        {
+          "name":"markers",
+          "label":"Markers",
+          "required":false,
+          "fieldType":"json",
+          "typeMetadata":{
+            "schema":{
+              "type":"object",
+              "properties": {
+                "lattitude":{
+                  "type":"number"
+                },
+                "longitude":{
+                  "type:":"number"
+                },
+                "label":{
+                  "type":"string"
+                }
+              },
+              "required": [
+                "lattitude",
+                "longitude"
+              ]
+            }
+          }
+        },
+        {
+          "name":"initial_coordinates",
+          "label":"Initial Coordinates",
+          "fieldType":"json",
+          "typeMetadata":{
+            "schema":{
+              "type":"object",
+              "properties":{
+                "lattitude":{
+                  "type":"number"
+                },
+                "longitude":{
+                  "type:":"number"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name":"initial_zoom_level",
+          "label":"Inital Zoom level",
+          "fieldType":"number",
+          "defaultValue":12,
+          "typeMetadata": {
+						"schema": {
+							"type": "number"
+						}
+					}
+        }
+      ],
+      "actions":[
+        {
+          "description":"Fired from button",
+          "label":"Button click event",
+          "name":"PROPERTY_CHANGED",
+          "payload":[
+            {
+              "type":"string",
+              "label":"Label",
+              "name":"label"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "scopeName": "x_904640_ui_comp_0"
+}
