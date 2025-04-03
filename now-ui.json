@@ -1,7 +1,7 @@
 {
   "components": {
     "x-904640-blue-box-component-experiment": {
-      "innerComponents": [],
+      "innerComponents": ["now-checkbox"],
       "uiBuilder": {
         "associatedTypes": ["global.core", "global.landing-page"],
         "label": "My Component",

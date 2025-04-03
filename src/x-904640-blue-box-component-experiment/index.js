@@ -1,4 +1,5 @@
 import { createCustomElement, actionTypes } from "@servicenow/ui-core";
+import "@servicenow/now-checkbox";
 import snabbdom from "@servicenow/ui-renderer-snabbdom";
 import styles from "./styles.scss";
 
@@ -27,12 +28,7 @@ const view = (state, { updateState, dispatch }) => {
 	return (
 		<div className="parent_div">
 			<div id="map"> Loadin google maps..</div>
-			<label className="switch">
-				Zoom : {state.properties.initialZoomLevel} | 
-				Show Markers on Map
-				<input type="checkbox" on-click={(e)=>handleClick(e,state.showList)} checked={state.showList} />
-				<span className="slider"></span>
-			</label>
+			<now-checkbox checked={state.showList} label="Show Markers on Map" on-click={(e)=>handleClick(e,state.showList)} ></now-checkbox>
 		</div>
 
 		
@@ -42,8 +38,7 @@ const view = (state, { updateState, dispatch }) => {
 createCustomElement("x-904640-blue-box-component-experiment", {
 	setInitialState({host, properties, context}) {
         return {
-            showList: true,
-			tempVar : "One"
+            showList: true
         };
     },
 	properties: {
@@ -108,7 +103,7 @@ createCustomElement("x-904640-blue-box-component-experiment", {
 		},
 		googleApiKey : {
 			"schema":{"type":"string"},
-			"default":"Google API Key"
+			"default":"GOOGLE API KEY"
 		}
 	},
 	renderer: { type: snabbdom },
