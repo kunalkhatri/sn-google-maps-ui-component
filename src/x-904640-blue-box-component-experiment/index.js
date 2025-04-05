@@ -3,7 +3,7 @@ import "@servicenow/now-checkbox";
 import snabbdom from "@servicenow/ui-renderer-snabbdom";
 import styles from "./styles.scss";
 
-const {COMPONENT_BOOTSTRAPPED, COMPONENT_DOM_READY  } = actionTypes;
+const {COMPONENT_BOOTSTRAPPED, COMPONENT_DOM_READY, COMPONENT_PROPERTY_CHANGED  } = actionTypes;
 
 var map_markers = [];
 var map;
@@ -103,15 +103,12 @@ createCustomElement("x-904640-blue-box-component-experiment", {
 		},
 		googleApiKey : {
 			"schema":{"type":"string"},
-			"default":"GOOGLE API KEY"
+			"default":"Google API Key"
 		}
 	},
 	renderer: { type: snabbdom },
 	view,
 	styles,
-	dispatches: {
-		PROPERTY_CHANGED: { schema: { type: "object" } },
-	},
 	actionHandlers : {
 		[COMPONENT_DOM_READY ] : async  (state)=>{
 			const {host} = state;
@@ -173,6 +170,50 @@ createCustomElement("x-904640-blue-box-component-experiment", {
 				}
 			});
 			
+		},
+		[COMPONENT_PROPERTY_CHANGED] : async (state) => {
+			// hiding all markers
+			map_markers.forEach(marker => {marker.map = null });
+			// deleting markers
+			map_markers = [];
+
+			const positions = state.properties.markers.map(marker => ({
+				lat : marker.lattitude,
+				lng : marker.longitude,
+				label : marker.label??""
+			}));
+
+			const { InfoWindow } = await google.maps.importLibrary("maps");
+			const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+
+			positions.forEach(position => {
+				const marker = new AdvancedMarkerElement({
+					map: state.state.showList?map:null,
+					position: position,
+					title:position.label,
+					gmpClickable : position.label.length > 0
+				});
+
+				map_markers.push(marker);
+
+				if (position.label.length > 0){
+					// adding infowindow for marker
+					const info_win = new InfoWindow({
+						content : position.label,
+						ariaLabel : position.label
+					});
+					
+					// connecting marker and infowindow
+					marker.addListener("gmp-click",()=>{
+						info_win.open({
+							anchor : marker,
+							map:map
+						});
+					});
+
+				}
+			});
 		}
 	}
 });
