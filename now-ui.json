@@ -4,29 +4,12 @@
       "innerComponents": ["now-checkbox"],
       "uiBuilder": {
         "associatedTypes": ["global.core", "global.landing-page"],
-        "label": "My Component",
+        "label": "Google Map",
         "tileIcon": "./tile-icon/generic-tile-icon.svg",
-        "description": "A description of my component",
+        "description": "A component to render google maps on workspace/UI Builder.",
         "category": "primitives"
       },
       "properties": [
-        {
-          "defaultValue": "Label",
-          "description": "Text displayed inside the button",
-          "fieldType": "string",
-          "label": "Label",
-          "managed": false,
-          "name": "label",
-          "readOnly": false,
-          "required": false,
-          "selectable": false,
-          "typeMetadata": {
-            "translatable": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        },
         {
           "name": "markers",
           "label": "Markers",
@@ -91,20 +74,6 @@
           "label": "Google Places API key",
           "fieldType": "string",
           "defaultValue": "GOOGLE API KEY"
-        }
-      ],
-      "actions": [
-        {
-          "description": "Fired from button",
-          "label": "Button click event",
-          "name": "PROPERTY_CHANGED",
-          "payload": [
-            {
-              "type": "string",
-              "label": "Label",
-              "name": "label"
-            }
-          ]
         }
       ]
     }

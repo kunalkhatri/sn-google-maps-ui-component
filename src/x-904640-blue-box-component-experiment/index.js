@@ -3,7 +3,7 @@ import "@servicenow/now-checkbox";
 import snabbdom from "@servicenow/ui-renderer-snabbdom";
 import styles from "./styles.scss";
 
-const {COMPONENT_BOOTSTRAPPED, COMPONENT_DOM_READY, COMPONENT_PROPERTY_CHANGED  } = actionTypes;
+const {COMPONENT_DOM_READY, COMPONENT_PROPERTY_CHANGED  } = actionTypes;
 
 var map_markers = [];
 var map;
@@ -103,7 +103,7 @@ createCustomElement("x-904640-blue-box-component-experiment", {
 		},
 		googleApiKey : {
 			"schema":{"type":"string"},
-			"default":"Google API Key"
+			"default":"GoogleAPIKey"
 		}
 	},
 	renderer: { type: snabbdom },
